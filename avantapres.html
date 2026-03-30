@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Avant et Apres – ENTRETIEN S.O</title>
+  <meta name="description" content="Voyez la difference avant et apres un nettoyage professionnel par ENTRETIEN S.O."/>
+  <link rel="stylesheet" href="style.css" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NFCCK8EC3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0NFCCK8EC3');
+  </script>
+  <style>
+    .avantapres-page {
+      padding: 50px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .avantapres-page h1 {
+      text-align: center;
+      color: #1a3a5c;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    .avantapres-page .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 50px;
+      font-size: 0.95rem;
+    }
+    .paire {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 50px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .paire-photo {
+      position: relative;
+    }
+    .paire-photo img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+    }
+    .paire-label {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .label-avant { background: #e53935; }
+    .label-apres { background: #2e7d32; }
+    .paire-titre {
+      grid-column: 1 / -1;
+      background: #1a3a5c;
+      color: #fff;
+      text-align: center;
+      padding: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    @media (max-width: 600px) {
+      .paire { grid-template-columns: 1fr; }
+      .paire-photo img { height: 220px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    Appelez-nous : <a href="tel:4385269155">438 526-9155</a>
+  </div>
+
+  <nav>
+    <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">ENTRETIEN <span>S.O</span></a></div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul id="navMenu">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#pourquoi">Pourquoi nous</a></li>
+      <li><a href="index.html#avis">Avis</a></li>
+      <li><a href="avantapres.html">Avant/Apres</a></li>
+      <li><a href="soumission.html">Soumission</a></li>
+      <li><a href="rdv.html">Prendre RDV</a></li>
+    </ul>
+  </nav>
+
+  <div class="avantapres-page">
+    <h1>Avant et Apres</h1>
+    <p class="subtitle">La difference parle d'elle-meme</p>
+
+    <!-- PAIRE 1 -->
+    <div class="paire">
+      <div class="paire-titre">Filtre de climatiseur</div>
+      <div class="paire-photo">
+        <img src="photoavant.jpg" alt="Filtre avant nettoyage" />
+        <span class="paire-label label-avant">Avant</span>
+      </div>
+      <div class="paire-photo">
+        <img src="photoapres (3).jpg" alt="Filtre apres nettoyage" />
+        <span class="paire-label label-apres">Apres</span>
+      </div>
+    </div>
+
+    <!-- PAIRE 2 -->
+    <div class="paire">
+      <div class="paire-titre">Unite exterieure</div>
+      <div class="paire-photo">
+        <img src="photoavant (2).jpg" alt="Unite exterieure avant nettoyage" />
+        <span class="paire-label label-avant">Avant</span>
+      </div>
+      <div class="paire-photo">
+        <img src="photoapres (2).jpg" alt="Unite exterieure apres nettoyage" />
+        <span class="paire-label label-apres">Apres</span>
+      </div>
+    </div>
+
+    <!-- PAIRE 3 -->
+    <div class="paire">
+      <div class="paire-titre">Conduit de ventilation</div>
+      <div class="paire-photo">
+        <img src="photoapres.jpg" alt="Conduit avant nettoyage" />
+        <span class="paire-label label-avant">Avant</span>
+      </div>
+      <div class="paire-photo">
+        <img src="photoapres (3).jpg" alt="Conduit apres nettoyage" />
+        <span class="paire-label label-apres">Apres</span>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:20px;">
+      <a href="soumission.html" class="btn-rdv">Demander une soumission gratuite</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 <span>ENTRETIEN S.O</span> – Tous droits reserves</p>
+    <p style="margin-top:10px; font-size:0.85rem; display:flex; justify-content:center; gap:24px; flex-wrap:wrap;">
+      <a href="tel:4385269155" style="color:#4fc3f7; text-decoration:none;">438 526-9155</a>
+      <a href="mailto:noahlafleur1234@gmail.com" style="color:#4fc3f7; text-decoration:none;">noahlafleur1234@gmail.com</a>
+    </p>
+  </footer>
+
+  <script>
+    document.getElementById('hamburger').addEventListener('click', function() {
+      this.classList.toggle('open');
+      document.getElementById('navMenu').classList.toggle('open');
+    });
+    document.getElementById('navMenu').querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        document.getElementById('hamburger').classList.remove('open');
+        document.getElementById('navMenu').classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>
