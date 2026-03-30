@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Demande de soumission - ENTRETIEN S.O</title>
+  <link rel="stylesheet" href="style.css" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NFCCK8EC3"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0NFCCK8EC3');</script>
+</head>
+<body>
+  <div class="topbar">Appelez-nous : <a href="tel:4385269155">438 526-9155</a></div>
+  <nav>
+    <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">ENTRETIEN <span>S.O</span></a></div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul id="navMenu">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#pourquoi">Pourquoi nous</a></li>
+      <li><a href="index.html#avis">Avis</a></li>
+      <li><a href="soumission.html">Soumission</a></li>
+      <li><a href="rdv.html">Prendre RDV</a></li>
+    </ul>
+  </nav>
+  <div class="rdv-page">
+    <h1>Demande de soumission gratuite</h1>
+    <p class="desc">Remplissez le formulaire ci-dessous et nous vous enverrons une soumission sans frais et sans engagement.</p>
+    <div class="rdv-form">
+      <div class="email-display">
+        Courriel : <a href="mailto:noahlafleur1234@gmail.com" style="color:#0d6efd;">noahlafleur1234@gmail.com</a>
+        &nbsp; Tel : <a href="tel:4385269155" style="color:#0d6efd;">438 526-9155</a>
+      </div>
+      <form id="soumissionForm">
+        <label for="nom">Nom complet *</label>
+        <input type="text" id="nom" name="nom" placeholder="Ex: Jean Tremblay" required />
+        <label for="from_email">Courriel *</label>
+        <input type="email" id="from_email" name="from_email" placeholder="votre@email.com" required />
+        <label for="telephone">Telephone *</label>
+        <input type="tel" id="telephone" name="telephone" placeholder="(438) 000-0000" required />
+        <label for="adresse">Adresse du batiment *</label>
+        <input type="text" id="adresse" name="adresse" placeholder="123 Rue Exemple, Ville" required />
+        <label for="type_batiment">Type de batiment *</label>
+        <select id="type_batiment" name="type_batiment" required>
+          <option value="" disabled selected>Selectionnez...</option>
+          <option>Maison unifamiliale</option>
+          <option>Condo / Appartement</option>
+          <option>Immeuble a logements</option>
+          <option>Bureau / Commercial</option>
+          <option>Autre</option>
+        </select>
+        <label for="nb_conduits">Nombre de conduits approximatif</label>
+        <input type="number" id="nb_conduits" name="nb_conduits" placeholder="Ex: 8" min="1" />
+        <label for="derniere_fois">Dernier nettoyage effectue</label>
+        <select id="derniere_fois" name="derniere_fois">
+          <option value="" disabled selected>Selectionnez...</option>
+          <option>Jamais</option>
+          <option>Moins de 1 an</option>
+          <option>1 a 3 ans</option>
+          <option>Plus de 3 ans</option>
+          <option>Je ne sais pas</option>
+        </select>
+        <label for="message">Informations supplementaires</label>
+        <textarea id="message" name="message" placeholder="Decrivez votre situation, vos besoins particuliers, etc."></textarea>
+        <div class="note-box">Soumission 100% gratuite et sans engagement. Nous vous repondons dans les 24 heures.</div>
+        <button type="submit" class="btn-send">Envoyer ma demande de soumission</button>
+      </form>
+      <div class="success-msg" id="successMsg">Votre demande a bien ete envoyee ! Nous vous contacterons dans les 24 heures.</div>
+    </div>
+  </div>
+  <footer>
+    <p>&copy; 2026 <span>ENTRETIEN S.O</span></p>
+    <p style="margin-top:10px;font-size:0.85rem;display:flex;justify-content:center;gap:24px;flex-wrap:wrap;">
+      <a href="tel:4385269155" style="color:#4fc3f7;text-decoration:none;">438 526-9155</a>
+      <a href="mailto:noahlafleur1234@gmail.com" style="color:#4fc3f7;text-decoration:none;">noahlafleur1234@gmail.com</a>
+    </p>
+  </footer>
+  <script>
+    document.getElementById('hamburger').addEventListener('click',function(){this.classList.toggle('open');document.getElementById('navMenu').classList.toggle('open');});
+    document.getElementById('soumissionForm').addEventListener('submit',async function(e){
+      e.preventDefault();
+      var btn=this.querySelector('.btn-send');
+      btn.textContent='Envoi en cours...';
+      btn.disabled=true;
+      try{
+        var res=await fetch('https://formspree.io/f/mojpdnkv',{method:'POST',body:new FormData(this),headers:{'Accept':'application/json'}});
+        if(res.ok){document.getElementById('soumissionForm').style.display='none';document.getElementById('successMsg').style.display='block';}
+        else{throw new Error('erreur');}
+      }catch(err){
+        btn.textContent='Envoyer ma demande de soumission';
+        btn.disabled=false;
+        alert('Une erreur est survenue. Appelez-nous au 438 526-9155.');
+      }
+    });
+  </script>
+</body>
+</html>

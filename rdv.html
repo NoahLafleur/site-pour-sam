@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prendre un RDV – ENTRETIEN S.O</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NFCCK8EC3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0NFCCK8EC3');
+  </script>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">ENTRETIEN <span>S.O</span></a></div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul id="navMenu">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#pourquoi">Pourquoi nous</a></li>
+      <li><a href="index.html#avis">Avis</a></li>
+      <li><a href="soumission.html">Soumission</a></li>
+      <li><a href="rdv.html">Prendre RDV</a></li>
+    </ul>
+  </nav>
+
+  <!-- FORMULAIRE RDV -->
+  <div class="rdv-page">
+    <h1>📅 Prendre un rendez-vous</h1>
+    <p class="desc">Remplissez le formulaire ci-dessous. Nous vous confirmerons votre RDV par courriel.</p>
+
+    <div class="rdv-form fade-up">
+
+      <!-- Adresse courriel de l'entreprise visible -->
+      <div class="email-display">
+        📧 <strong>Courriel de l'entreprise :</strong>&nbsp;
+        <a href="mailto:noahlafleur1234@gmail.com" style="color:#0d6efd;">noahlafleur1234@gmail.com</a>
+      </div>
+
+      <form id="rdvForm">
+        <label for="nom">Votre nom complet *</label>
+        <input type="text" id="nom" name="nom" placeholder="Ex: Jean Tremblay" required />
+
+        <label for="email">Votre courriel *</label>
+        <input type="email" id="email" name="email" placeholder="votre@email.com" required />
+
+        <label for="telephone">Votre téléphone</label>
+        <input type="tel" id="telephone" name="telephone" placeholder="(514) 000-0000" />
+
+        <label for="adresse">Adresse du service *</label>
+        <input type="text" id="adresse" name="adresse" placeholder="123 Rue Exemple, Ville" required />
+
+        <label for="date">Date souhaitée *</label>
+        <input type="date" id="date" name="date" required />
+
+        <label for="message">Votre message pour le RDV *</label>
+        <textarea id="message" name="message" placeholder="Décrivez votre besoin (type de logement, nombre de conduits, etc.)" required></textarea>
+
+        <div class="note-box">
+          📌 <strong>Note :</strong> Si la date choisie n'est pas disponible, vous recevrez un courriel avec une date alternative proposée par notre équipe.
+        </div>
+
+        <button type="submit" class="btn-send">✉️ Envoyer ma demande de RDV</button>
+      </form>
+
+      <div class="success-msg" id="successMsg">
+        ✅ Votre demande de RDV a bien été envoyée ! Nous vous contacterons sous peu pour confirmer votre rendez-vous.
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 <span>ENTRETIEN S.O</span> – Tous droits réservés</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    const btn = document.getElementById('hamburger');
+    const menu = document.getElementById('navMenu');
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('open');
+      menu.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
