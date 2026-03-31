@@ -21,8 +21,8 @@ const EMAILJS_PUBLIC_KEY  = "QN2Uq47z4ppgs8TzA";
   document.head.appendChild(script);
 })();
 
-// Gestion du formulaire
-document.addEventListener("DOMContentLoaded", () => {
+function initScripts() {
+  // Gestion du formulaire
   const form = document.getElementById("rdvForm");
   if (form) {
     // Date minimum = aujourd'hui
@@ -65,13 +65,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.getElementById('hamburger');
   const navMenu = document.getElementById('navMenu');
   if (hamburger && navMenu) {
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
+    // Si l'événement a déjà été attaché, on évite les doublons (bien que toggle soit idempotent pour le click si c'est unique, mais bon)
+    hamburger.replaceWith(hamburger.cloneNode(true)); // reset listeners
+    const newHamburger = document.getElementById('hamburger');
+    
+    newHamburger.addEventListener('click', () => {
+      newHamburger.classList.toggle('open');
       navMenu.classList.toggle('open');
     });
+
     navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      hamburger.classList.remove('open');
+      newHamburger.classList.remove('open');
       navMenu.classList.remove('open');
     }));
   }
-});
+}
+
+// Lancer au chargement (ou tout de suite si déjà chargé)
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initScripts);
+} else {
+  initScripts();
+}
