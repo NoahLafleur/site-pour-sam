@@ -143,17 +143,6 @@
     </p>
   </footer>
 
-  <script>
-    document.getElementById('hamburger').addEventListener('click', function() {
-      this.classList.toggle('open');
-      document.getElementById('navMenu').classList.toggle('open');
-    });
-    document.getElementById('navMenu').querySelectorAll('a').forEach(function(a) {
-      a.addEventListener('click', function() {
-        document.getElementById('hamburger').classList.remove('open');
-        document.getElementById('navMenu').classList.remove('open');
-      });
-    });
-  </script>
+  <script src="script.js?v=2"></script>
 </body>
 </html>

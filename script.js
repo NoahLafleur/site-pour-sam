@@ -65,17 +65,13 @@ function initScripts() {
   const hamburger = document.getElementById('hamburger');
   const navMenu = document.getElementById('navMenu');
   if (hamburger && navMenu) {
-    // Si l'événement a déjà été attaché, on évite les doublons (bien que toggle soit idempotent pour le click si c'est unique, mais bon)
-    hamburger.replaceWith(hamburger.cloneNode(true)); // reset listeners
-    const newHamburger = document.getElementById('hamburger');
-    
-    newHamburger.addEventListener('click', () => {
-      newHamburger.classList.toggle('open');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
       navMenu.classList.toggle('open');
     });
 
     navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      newHamburger.classList.remove('open');
+      hamburger.classList.remove('open');
       navMenu.classList.remove('open');
     }));
   }
