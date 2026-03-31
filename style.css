@@ -50,6 +50,18 @@ nav .logo {
 
 nav .logo span { color: #4fc3f7; }
 
+.site-logo {
+  height: 80px;
+  width: auto;
+  mix-blend-mode: screen; /* Rend le fond noir transparent */
+  transition: transform 0.3s ease;
+  transform-origin: left center;
+}
+
+.site-logo:hover {
+  transform: scale(1.05);
+}
+
 .hamburger {
   display: none;
   flex-direction: column;
