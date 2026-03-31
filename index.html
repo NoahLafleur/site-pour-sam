@@ -154,19 +154,5 @@
   </footer>
 
   <script src="script.js"></script>
-  <script>
-    var h = document.getElementById('hamburger');
-    var m = document.getElementById('navMenu');
-    h.addEventListener('click', function() {
-      h.classList.toggle('open');
-      m.classList.toggle('open');
-    });
-    m.querySelectorAll('a').forEach(function(a) {
-      a.addEventListener('click', function() {
-        h.classList.remove('open');
-        m.classList.remove('open');
-      });
-    });
-  </script>
 </body>
 </html>

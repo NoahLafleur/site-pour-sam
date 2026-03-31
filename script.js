@@ -24,42 +24,42 @@ const EMAILJS_PUBLIC_KEY  = "QN2Uq47z4ppgs8TzA";
 // Gestion du formulaire
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("rdvForm");
-  if (!form) return;
-
-  // Date minimum = aujourd'hui
-  const dateInput = document.getElementById("date");
-  if (dateInput) {
-    const today = new Date().toISOString().split("T")[0];
-    dateInput.setAttribute("min", today);
-  }
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const btn = form.querySelector(".btn-send");
-    btn.textContent = "⏳ Envoi en cours...";
-    btn.disabled = true;
-
-    const templateParams = {
-      from_name:  document.getElementById("nom").value,
-      from_email: document.getElementById("email").value,
-      telephone:  document.getElementById("telephone").value || "Non fourni",
-      adresse:    document.getElementById("adresse").value,
-      date_rdv:   document.getElementById("date").value,
-      message:    document.getElementById("message").value,
-    };
-
-    try {
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
-      form.style.display = "none";
-      document.getElementById("successMsg").style.display = "block";
-    } catch (error) {
-      console.error("Erreur EmailJS:", error);
-      btn.textContent = "✉️ Envoyer ma demande de RDV";
-      btn.disabled = false;
-      alert("Une erreur s'est produite. Veuillez réessayer ou nous contacter directement par courriel.");
+  if (form) {
+    // Date minimum = aujourd'hui
+    const dateInput = document.getElementById("date");
+    if (dateInput) {
+      const today = new Date().toISOString().split("T")[0];
+      dateInput.setAttribute("min", today);
     }
-  });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const btn = form.querySelector(".btn-send");
+      btn.textContent = "⏳ Envoi en cours...";
+      btn.disabled = true;
+
+      const templateParams = {
+        from_name:  document.getElementById("nom").value,
+        from_email: document.getElementById("email").value,
+        telephone:  document.getElementById("telephone").value || "Non fourni",
+        adresse:    document.getElementById("adresse").value,
+        date_rdv:   document.getElementById("date").value,
+        message:    document.getElementById("message").value,
+      };
+
+      try {
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+        form.style.display = "none";
+        document.getElementById("successMsg").style.display = "block";
+      } catch (error) {
+        console.error("Erreur EmailJS:", error);
+        btn.textContent = "✉️ Envoyer ma demande de RDV";
+        btn.disabled = false;
+        alert("Une erreur s'est produite. Veuillez réessayer ou nous contacter directement par courriel.");
+      }
+    });
+  }
 
   // Hamburger menu
   const hamburger = document.getElementById('hamburger');
