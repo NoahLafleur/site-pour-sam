@@ -190,15 +190,37 @@
 
   <script>
     var MOT_DE_PASSE = "3$132DyJY=";
+    var tentatives = 0;
+    var bloque = false;
 
     function checkLogin() {
+      if (bloque) return;
       var pwd = document.getElementById('pwdInput').value;
       if (pwd === MOT_DE_PASSE) {
+        tentatives = 0;
         document.getElementById('loginBox').style.display = 'none';
         document.getElementById('dashboard').style.display = 'block';
         loadPrix();
       } else {
-        document.getElementById('loginError').style.display = 'block';
+        tentatives++;
+        if (tentatives >= 3) {
+          bloque = true;
+          document.getElementById('loginError').textContent = 'Trop de tentatives. Reessayez dans 30 secondes.';
+          document.getElementById('loginError').style.display = 'block';
+          document.getElementById('pwdInput').disabled = true;
+          document.querySelector('.login-box button').disabled = true;
+          setTimeout(function() {
+            bloque = false;
+            tentatives = 0;
+            document.getElementById('pwdInput').disabled = false;
+            document.querySelector('.login-box button').disabled = false;
+            document.getElementById('loginError').style.display = 'none';
+            document.getElementById('pwdInput').value = '';
+          }, 30000);
+        } else {
+          document.getElementById('loginError').textContent = 'Mot de passe incorrect. (' + tentatives + '/3)';
+          document.getElementById('loginError').style.display = 'block';
+        }
       }
     }
 
