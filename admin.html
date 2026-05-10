@@ -1,47 +1,49 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin – ENTRETIEN S.O</title>
+  <title>Admin - ENTRETIEN S.O</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    body { background: #0f1923; color: #fff; font-family: 'Segoe UI', sans-serif; }
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>emailjs.init("QN2Uq47z4ppgs8TzA");</script>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:#0f1923; color:#fff; font-family:'Segoe UI',sans-serif; }
 
-    .login-box {
-      max-width: 380px;
-      margin: 120px auto;
-      background: #1a2a3a;
-      border-radius: 16px;
-      padding: 40px 32px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-      text-align: center;
+    /* LOGIN */
+    .login-box { max-width:380px; margin:100px auto; background:#1a2a3a; border-radius:16px; padding:40px 32px; box-shadow:0 8px 32px rgba(0,0,0,0.4); text-align:center; }
+    .login-box img { height:80px; margin-bottom:20px; }
+    .login-box h2 { color:#4fc3f7; margin-bottom:24px; font-size:1.3rem; }
+    .login-box input { width:100%; padding:12px 16px; border-radius:9px; border:1.5px solid #2a4a6a; background:#0f1923; color:#fff; font-size:1rem; margin-bottom:16px; outline:none; }
+    .login-box input:focus { border-color:#4fc3f7; }
+    .login-box .btn-login { width:100%; padding:13px; background:#4fc3f7; color:#0f1923; border:none; border-radius:50px; font-size:1rem; font-weight:700; cursor:pointer; }
+    .error-msg { color:#ef5350; font-size:0.85rem; margin-top:10px; display:none; }
+
+    /* DASHBOARD */
+    .dashboard { display:none; }
+    .dash-top { background:#1a2a3a; padding:14px 28px; display:flex; justify-content:space-between; align-items:center; }
+    .dash-top img { height:50px; }
+    .dash-top h1 { color:#4fc3f7; font-size:1.2rem; }
+    .btn-logout { background:#ef5350; color:#fff; border:none; padding:9px 20px; border-radius:50px; cursor:pointer; font-weight:600; font-size:0.9rem; }
+
+    /* ONGLETS */
+    .tabs { display:flex; background:#0f1923; border-bottom:2px solid #1a2a3a; }
+    .tab { padding:14px 24px; cursor:pointer; color:#aaa; font-size:0.95rem; border-bottom:3px solid transparent; transition:all 0.2s; }
+    .tab.active { color:#4fc3f7; border-bottom-color:#4fc3f7; }
+    .tab-content { display:none; padding:28px; max-width:960px; margin:0 auto; }
+    .tab-content.active { display:block; }
+
+    /* CARDS */
+    .card { background:#1a2a3a; border-radius:14px; padding:24px; margin-bottom:20px; }
+    .card h3 { color:#4fc3f7; margin-bottom:18px; font-size:1rem; border-bottom:1px solid #2a4a6a; padding-bottom:10px; }
+    label { display:block; font-size:0.82rem; color:#aaa; margin-bottom:5px; margin-top:14px; }
+    input[type=text], input[type=email], input[type=number], input[type=date], textarea, select {
+      width:100%; padding:10px 12px; background:#0f1923; border:1.5px solid #2a4a6a; border-radius:8px; color:#fff; font-size:0.93rem; font-family:inherit; outline:none;
     }
-    .login-box img { height: 80px; margin-bottom: 20px; }
-    .login-box h2 { color: #4fc3f7; margin-bottom: 24px; font-size: 1.3rem; }
-    .login-box input {
-      width: 100%;
-      padding: 12px 16px;
-      border-radius: 9px;
-      border: 1.5px solid #2a4a6a;
-      background: #0f1923;
-      color: #fff;
-      font-size: 1rem;
-      margin-bottom: 16px;
-      outline: none;
-    }
-    .login-box input:focus { border-color: #4fc3f7; }
-    .login-box button {
-      width: 100%;
-      padding: 13px;
-      background: #4fc3f7;
-      color: #0f1923;
-      border: none;
-      border-radius: 50px;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-    }
+    input:focus, textarea:focus, select:focus { border-color:#4fc3f7; }
+    textarea { resize:vertical; min-height:70px; }
+    .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .btn
     .login-box .error { color: #ef5350; font-size: 0.85rem; margin-top: 10px; display: none; }
 
     /* DASHBOARD */
@@ -120,7 +122,7 @@
   <!-- DASHBOARD -->
   <div class="dashboard" id="dashboard">
     <div class="dash-header">
-      <h1>&#9881; Tableau de bord – ENTRETIEN S.O</h1>
+      <h1>&#9881; Tableau de bord â€“ ENTRETIEN S.O</h1>
       <button onclick="logout()">Se deconnecter</button>
     </div>
 
@@ -129,27 +131,27 @@
       <h3>&#128176; Prix et descriptions des services</h3>
       <div class="prix-grid">
         <div class="prix-item">
-          <label>Nettoyage residentiel – Prix</label>
+          <label>Nettoyage residentiel â€“ Prix</label>
           <input type="text" id="prix1" placeholder="Ex: 149$" />
         </div>
         <div class="prix-item">
-          <label>Nettoyage residentiel – Description</label>
+          <label>Nettoyage residentiel â€“ Description</label>
           <textarea id="desc1" placeholder="Description du service..."></textarea>
         </div>
         <div class="prix-item">
-          <label>Nettoyage commercial – Prix</label>
+          <label>Nettoyage commercial â€“ Prix</label>
           <input type="text" id="prix2" placeholder="Ex: 299$" />
         </div>
         <div class="prix-item">
-          <label>Nettoyage commercial – Description</label>
+          <label>Nettoyage commercial â€“ Description</label>
           <textarea id="desc2" placeholder="Description du service..."></textarea>
         </div>
         <div class="prix-item">
-          <label>Inspection – Prix</label>
+          <label>Inspection â€“ Prix</label>
           <input type="text" id="prix3" placeholder="Ex: 79$" />
         </div>
         <div class="prix-item">
-          <label>Inspection – Description</label>
+          <label>Inspection â€“ Description</label>
           <textarea id="desc3" placeholder="Description du service..."></textarea>
         </div>
       </div>
@@ -159,30 +161,52 @@
 
     <!-- FACTURATION -->
     <div class="section-card">
-      <h3>&#128203; Facturation – Envoyer une facture a un client</h3>
-      <p style="color:#aaa;font-size:0.9rem;margin-bottom:20px;">Utilise un de ces services gratuits pour creer et envoyer des factures par courriel directement a tes clients.</p>
-      <div class="facture-links">
-        <a href="https://www.wave.com" target="_blank" class="facture-link">
-          <span class="icon">&#127754;</span>
-          <div>
-            <strong>Wave</strong><br>
-            <span style="font-size:0.8rem;color:#aaa;">Factures gratuites illimitees</span>
-          </div>
-        </a>
-        <a href="https://invoice-generator.com" target="_blank" class="facture-link">
-          <span class="icon">&#128196;</span>
-          <div>
-            <strong>Invoice Generator</strong><br>
-            <span style="font-size:0.8rem;color:#aaa;">Rapide, sans compte requis</span>
-          </div>
-        </a>
-        <a href="https://www.zoho.com/invoice/" target="_blank" class="facture-link">
-          <span class="icon">&#128200;</span>
-          <div>
-            <strong>Zoho Invoice</strong><br>
-            <span style="font-size:0.8rem;color:#aaa;">Gratuit jusqu'a 1000 factures</span>
-          </div>
-        </a>
+      <h3>&#128203; Creer et envoyer une facture</h3>
+
+      <div class="prix-grid" style="margin-bottom:16px;">
+        <div class="prix-item">
+          <label>Nom du client *</label>
+          <input type="text" id="f_nom" placeholder="Ex: Jean Tremblay" />
+        </div>
+        <div class="prix-item">
+          <label>Courriel du client *</label>
+          <input type="email" id="f_email" placeholder="client@email.com" />
+        </div>
+        <div class="prix-item">
+          <label>Adresse du client</label>
+          <input type="text" id="f_adresse" placeholder="123 Rue Exemple, Ville" />
+        </div>
+        <div class="prix-item">
+          <label>Numero de facture</label>
+          <input type="text" id="f_numero" placeholder="Ex: 2026-001" />
+        </div>
+        <div class="prix-item">
+          <label>Description du travail *</label>
+          <textarea id="f_description" placeholder="Ex: Nettoyage de 8 conduits de ventilation, maison unifamiliale..."></textarea>
+        </div>
+        <div class="prix-item">
+          <label>Montant total *</label>
+          <input type="text" id="f_montant" placeholder="Ex: 149.00$" />
+        </div>
+        <div class="prix-item">
+          <label>Date de la facture</label>
+          <input type="date" id="f_date" />
+        </div>
+        <div class="prix-item">
+          <label>Date d'echeance</label>
+          <input type="date" id="f_echeance" />
+        </div>
+      </div>
+
+      <div class="prix-item" style="margin-bottom:16px;">
+        <label>Note supplementaire</label>
+        <textarea id="f_note" placeholder="Ex: Merci pour votre confiance. Paiement par virement ou cheque accepte."></textarea>
+      </div>
+
+      <button class="btn-save" onclick="envoyerFacture()">&#9993; Envoyer la facture par courriel</button>
+      <p class="saved-msg" id="factureMsg">&#10003; Facture envoyee avec succes !</p>
+      <p style="color:#ef5350;font-size:0.85rem;margin-top:8px;display:none;" id="factureErr">Erreur lors de l'envoi. Verifiez les informations.</p>
+    </div>
       </div>
     </div>
 
@@ -224,12 +248,54 @@
       }
     }
 
-    document.getElementById('pwdInput').addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') checkLogin();
-    });
+    function loadPrix() {
+      ['prix1','desc1','prix2','desc2','prix3','desc3'].forEach(function(id) {
+        var val = localStorage.getItem(id);
+        if (val) document.getElementById(id).value = val;
+      });
 
-    function logout() {
-      document.getElementById('loginBox').style.display = 'block';
+      // Date par defaut = aujourd'hui
+      var today = new Date().toISOString().split('T')[0];
+      document.getElementById('f_date').value = today;
+    }
+
+    function envoyerFacture() {
+      var nom = document.getElementById('f_nom').value;
+      var email = document.getElementById('f_email').value;
+      var desc = document.getElementById('f_description').value;
+      var montant = document.getElementById('f_montant').value;
+
+      if (!nom || !email || !desc || !montant) {
+        alert('Veuillez remplir les champs obligatoires (*)');
+        return;
+      }
+
+      var btn = document.querySelector('[onclick="envoyerFacture()"]');
+      btn.textContent = 'Envoi en cours...';
+      btn.disabled = true;
+
+      emailjs.send("service_ddujg73", "template_facture", {
+        client_nom:    nom,
+        client_email:  email,
+        client_adresse: document.getElementById('f_adresse').value || 'N/A',
+        facture_numero: document.getElementById('f_numero').value || 'N/A',
+        description:   desc,
+        montant:       montant,
+        date_facture:  document.getElementById('f_date').value || 'N/A',
+        date_echeance: document.getElementById('f_echeance').value || 'N/A',
+        note:          document.getElementById('f_note').value || '',
+      }).then(function() {
+        document.getElementById('factureMsg').style.display = 'block';
+        document.getElementById('factureErr').style.display = 'none';
+        btn.textContent = '&#9993; Envoyer la facture par courriel';
+        btn.disabled = false;
+        setTimeout(function() { document.getElementById('factureMsg').style.display = 'none'; }, 4000);
+      }, function() {
+        document.getElementById('factureErr').style.display = 'block';
+        btn.textContent = '&#9993; Envoyer la facture par courriel';
+        btn.disabled = false;
+      });
+    } document.getElementById('loginBox').style.display = 'block';
       document.getElementById('dashboard').style.display = 'none';
       document.getElementById('pwdInput').value = '';
     }

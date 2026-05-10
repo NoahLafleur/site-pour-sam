@@ -1,12 +1,12 @@
-// ============================================================
-// ENTRETIEN S.O – Envoi automatique de RDV vers Gmail
+﻿// ============================================================
+// ENTRETIEN S.O â€“ Envoi automatique de RDV vers Gmail
 // Utilise EmailJS (gratuit) : https://www.emailjs.com
 //
-// ÉTAPES DE CONFIGURATION :
-// 1. Crée un compte sur https://www.emailjs.com
+// Ã‰TAPES DE CONFIGURATION :
+// 1. CrÃ©e un compte sur https://www.emailjs.com
 // 2. Ajoute ton compte Gmail comme "Email Service"
-// 3. Crée un "Email Template" avec les variables ci-dessous
-// 4. Remplace les 3 valeurs YOUR_... par tes vraies clés
+// 3. CrÃ©e un "Email Template" avec les variables ci-dessous
+// 4. Remplace les 3 valeurs YOUR_... par tes vraies clÃ©s
 // ============================================================
 
 const EMAILJS_SERVICE_ID  = "service_0w27vxh";
@@ -36,7 +36,7 @@ function initScripts() {
       e.preventDefault();
 
       const btn = form.querySelector(".btn-send");
-      btn.textContent = "⏳ Envoi en cours...";
+      btn.textContent = "â³ Envoi en cours...";
       btn.disabled = true;
 
       const templateParams = {
@@ -54,9 +54,9 @@ function initScripts() {
         document.getElementById("successMsg").style.display = "block";
       } catch (error) {
         console.error("Erreur EmailJS:", error);
-        btn.textContent = "✉️ Envoyer ma demande de RDV";
+        btn.textContent = "âœ‰ï¸ Envoyer ma demande de RDV";
         btn.disabled = false;
-        alert("Une erreur s'est produite. Veuillez réessayer ou nous contacter directement par courriel.");
+        alert("Une erreur s'est produite. Veuillez rÃ©essayer ou nous contacter directement par courriel.");
       }
     });
   }
@@ -77,7 +77,7 @@ function initScripts() {
   }
 }
 
-// Lancer au chargement (ou tout de suite si déjà chargé)
+// Lancer au chargement (ou tout de suite si dÃ©jÃ  chargÃ©)
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initScripts);
 } else {
